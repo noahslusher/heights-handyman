@@ -7,7 +7,7 @@ function About() {
  return (
   <div class="">
    <div class="" id="title">
-    About Heights Handyman
+    <h1>About Heights Handyman</h1>
    </div>
    <div class="" id="">
     <img src={Photo} alt="photo of Noah Slusher"></img>
@@ -18,3 +18,5 @@ function About() {
   </div>
  )
 }
+
+export default About
