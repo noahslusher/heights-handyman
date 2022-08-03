@@ -9,10 +9,10 @@ function Header() {
  }
  return (
   <header>
-   <div id="title">
+   <div className="" id="title">
     <h1><Link to="/">Heights Handyman</Link> </h1>
    </div>
-   <div id="navbar">
+   <div className='' id="navbar">
     <div><Link to="/about">About</Link></div>
     <div><Link to="/contact">Contact</Link></div>
     <div><Link to="/services">Services</Link></div>

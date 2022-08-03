@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom'
 
 function About() {
  return (
-  <div class="">
-   <div class="" id="title">
+  <div className="">
+   <div className="" id="title">
     <h1>About Heights Handyman</h1>
    </div>
-   <div class="" id="">
+   <div className="" id="photo">
     <img src={Photo} alt="photo of Noah Slusher"></img>
    </div>
-   <div class="" id="">
+   <div className="" id="about">
     <p>Heights Handyman is run by its creator, Noah Slusher. We serve the Salt Lake Valley and specialize in small to medium home repairs and projects</p>
    </div>
   </div>

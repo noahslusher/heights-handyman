@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 function Homepage() {
  return (
-  <div class="" id="">
-   <div class="" id="title">
+  <div className="" id="">
+   <div className="text-lg font-bold" id="title">
     Heights Handyman
    </div>
-   <div class="" id="subtitle">
+   <div className="text-2xl" id="subtitle">
     Your Home is One Step Closer to Realizing Its Full Potential
    </div>
    <div class="" id="nav">

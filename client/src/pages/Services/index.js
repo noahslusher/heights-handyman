@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 function Services() {
  return(
-  <div class="" id="">
+  <div className="" id="title">
    <div>
    <h1>What We Offer</h1>
    </div>
-   <div class="" id="">
+   <div className="" id="about">
     <p>We offer small to medium home repairs and upgrades.</p>
    </div>
   </div>
