@@ -10,7 +10,7 @@ function Homepage() {
    <div className="text-2xl" id="subtitle">
     Your Home is One Step Closer to Realizing Its Full Potential
    </div>
-   <div class="" id="nav">
+   <div className="" id="nav">
     <div><Link to="/about">About</Link></div>
     <div><Link to="/contact">Contact</Link></div>
     <div><Link to="/services">Services</Link></div>
