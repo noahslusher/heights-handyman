@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
+import {createRoot} from 'react-dom/client'
 import './index.css'
 import App from './App'
 import { AmplifyProvider } from '@aws-amplify/ui-react'
@@ -8,11 +9,13 @@ import config from './aws-exports'
 import '@aws-amplify/ui-react/styles.css'
 Amplify.configure(config)
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'))
+
+root.render(
 	<React.StrictMode>
 		<AmplifyProvider>
 			<App />
 		</AmplifyProvider>
 	</React.StrictMode>,
-	document.getElementById('root')
+	
 )

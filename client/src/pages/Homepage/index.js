@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Homepage() {
  return (
   <div className="" id="">
-   <div className="text-lg font-bold" id="title">
+   <div className="text-xl font-bold underline" id="title">
     Heights Handyman
    </div>
    <div className="text-2xl" id="subtitle">

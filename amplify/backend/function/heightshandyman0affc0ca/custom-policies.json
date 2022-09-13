@@ -2,6 +2,6 @@
   {
     "Action": ["ses:SendEmail"],
     "Effect": "Allow",
-    "Resource": ["arn:aws:ses:us-west-2:167539090131:identity/service@heights-handyman.com"]
+    "Resource": ["arn:aws:ses:*:*:identity/service@heights-handyman.com"]
   }
 ]
