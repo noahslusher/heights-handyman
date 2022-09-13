@@ -16,7 +16,7 @@ exports.handler = async (event) => {
             },
             Source: process.env.SES_EMAIL,
             Message: {
-              Subject: { Data: 'Client Inquiry' },
+              Subject: { Data: `Client Inquiry - ${clientName}` },
               Body: {
                 Text: { Data: `My name is ${clientName}. You can reach me at ${clientEmail}. ${clientMessage}` },
               },
