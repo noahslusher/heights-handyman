@@ -12,9 +12,9 @@ exports.handler = async (event) => {
       await ses
           .sendEmail({
             Destination: {
-              ToAddresses: [process.env.SES_EMAIL],
+              ToAddresses: [process.env.SES_EMAIL_2],
             },
-            Source: process.env.SES_EMAIL,
+            Source: process.env.SES_EMAIL_2,
             Message: {
               Subject: { Data: `Client Inquiry - ${clientName}` },
               Body: {
