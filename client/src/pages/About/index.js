@@ -5,17 +5,60 @@ import { Link } from 'react-router-dom'
 
 function About() {
  return (
-  <div className="">
-   <div className="flex justify-center text-4xl mb-6" id="title">
+ <section 
+ className='
+ flex
+ justify-center
+ '>
+  <div 
+  className="
+  mt-4
+  flex
+  flex-col
+  items-center
+  justify-center
+  rounded-lg
+  shadow-lg
+  w-fit
+  ">
+   <div 
+   className="
+   flex 
+   justify-center 
+   text-4xl 
+   m-6
+   " id="title">
     <h1>About Heights Handyman</h1>
    </div>
-   <div className="flex justify-center" id="photo">
-    <img className="h-60 sm:h-96 rounded-lg" src={Photo} alt="photo of Noah Slusher"></img>
+   <div 
+   className="
+   flex 
+   justify-center
+   rounded-xl
+   border-2
+   border-black
+   " id="photo"
+   >
+    <img 
+    className="
+    h-60 
+    sm:h-96 
+    rounded-lg
+    shadow
+    " src={Photo} alt="photo of Noah Slusher"></img>
    </div>
-   <div className="flex justify-center w-1/2 mt-6" id="about">
-    <p className='flex justify-center'>Heights Handyman is run by its creator, Noah Slusher. We serve the Salt Lake Valley and specialize in small to medium home repairs and projects</p>
+   <div 
+   className="
+   flex 
+   justify-center 
+   text-center
+   w-1/2 
+   mt-6
+   " id="about">
+    <p>Heights Handyman is run by its creator, Noah Slusher. We serve the Salt Lake Valley and specialize in small to medium home repairs and projects</p>
    </div>
   </div>
+  </section>
  )
 }
 

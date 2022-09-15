@@ -15,7 +15,7 @@ function Homepage() {
     h-screen
     z-10
     '> 
-          <video className="
+      <video className="
         absolute
         object-cover
         h-full
@@ -23,6 +23,16 @@ function Homepage() {
         top-0
         left-0
         " id="" src={background} autoPlay loop muted  id="bg-video"/>
+      <div className='
+        absolute
+        top-0
+        left-0
+        w-full
+        h-full
+        bg-sky-600
+        mix-blend-overlay
+        '>
+        </div>
       <div
         className="
           flex 

@@ -6,24 +6,53 @@ import services from './tools.svg'
 
 
 function Header() {
- const location = useLocation()
- if (location.pathname === "/") {
-  return null
- }
- return (
-  <header className=" bg-cyan-600 p-4">
-   <div className="" id="title">
-    <div className="flex justify-start text-4xl">
-     <h1><Link to="/">Heights Handyman</Link> </h1>
-     </div>
-   </div>
-   <div className='flex justify-end space-x-4 mb-4' id="navbar">
-    <div className=""><Link to="/about"><img src={about}/></Link></div>
-    <div className=''><Link to="/contact"><img src={services}/></Link></div>
-    <div className=''><Link to="/services"><img src={contact}/></Link></div>
-   </div>
-  </header>
- )
+  const location = useLocation()
+  if (location.pathname === "/") {
+    return null
+  }
+  return (
+    <header
+      className=" 
+        bg-sky-600 
+        p-2
+        border-b-2 
+        border-black
+        ">
+
+      <div
+        className="
+          flex 
+          justify-center
+          items-center 
+          text-6xl
+          ">
+        <h1><Link to="/">Heights Handyman</Link> </h1>
+      </div>
+      <div
+        className='
+          flex 
+          justify-end 
+          space-x-4 
+          
+          ' id="navbar">
+        <div className="
+            p-2 
+            hover:bg-white/50 
+            hover:rounded-md
+            "><Link to="/about"><img src={about} /></Link></div>
+        <div className="
+            p-2 
+            hover:bg-white/50 
+            hover:rounded-md
+            "><Link to="/contact"><img src={services} /></Link></div>
+        <div className="
+            p-2 
+            hover:bg-white/50 
+            hover:rounded-md
+            "><Link to="/services"><img src={contact} /></Link></div>
+      </div>
+    </header>
+  )
 }
 
 export default Header
