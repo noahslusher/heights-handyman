@@ -3,8 +3,13 @@ import React from 'react'
 
 function Footer() {
  return (
-  <footer className=''>
-   &copy; Developed by <a href="https://noahslusherportfolio.herokuapp.com/" target="_blank">Noah Slusher</a>
+  <footer 
+  className='
+  mt-6
+  p-4
+  flex
+  justify-start'>
+   &copy; Developed_by <a href="https://noahslusherportfolio.herokuapp.com/" target="_blank"><div> _Noah Slusher</div></a>
   </footer>
  )
 }

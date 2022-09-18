@@ -54,6 +54,7 @@ function About() {
    text-center
    w-1/2 
    mt-6
+   pb-4
    " id="about">
     <p>Heights Handyman is run by its creator, Noah Slusher. We serve the Salt Lake Valley and specialize in small to medium home repairs and projects</p>
    </div>

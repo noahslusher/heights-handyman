@@ -44,12 +44,12 @@ function Header() {
             p-2 
             hover:bg-white/50 
             hover:rounded-md
-            "><Link to="/contact"><img src={services} /></Link></div>
+            "><Link to="/services"><img src={services} /></Link></div>
         <div className="
             p-2 
             hover:bg-white/50 
             hover:rounded-md
-            "><Link to="/services"><img src={contact} /></Link></div>
+            "><Link to="/contact"><img src={contact} /></Link></div>
       </div>
     </header>
   )
