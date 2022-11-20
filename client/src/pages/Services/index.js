@@ -10,7 +10,7 @@ function Services() {
   flex-col
   items-center
   justify-center
-  p-4" id="title">
+  p-4" id="services">
    <div 
    className='
    flex

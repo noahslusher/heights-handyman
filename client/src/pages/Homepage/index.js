@@ -13,63 +13,80 @@ function Homepage() {
     flex-wrap
     w-screen
     h-screen
+    justify-center
     z-10
-    '> 
+    relative
+    ' id="/"> 
       <video className="
         absolute
         object-cover
-        h-full
+        sm:h-full
+        h-3/4
         w-full
-        top-0
-        left-0
-        " id="" src={background} autoPlay loop muted  id="bg-video"/>
-      <div className='
+        sm:top-0
+        sm:left-0
+        z-0
+        " src={background} autoPlay loop muted  id="bg-video"/>
+      {/* <div className='
         absolute
         top-0
         left-0
-        w-full
-        h-full
-        bg-sky-600
+        sm:w-full
+        sm:h-full
+        bg-white
         mix-blend-overlay
         '>
-        </div>
+        </div> */}
       <div
         className="
           flex 
           justify-center 
           pt-10 
-          text-3xl 
+          text-4xl 
           sm:text-6xl 
+          sm:absolute
+          sm:bottom-80
+          sm:left-20
           " id="title">
         <div
           className="
-            bg-white/50 
+            sm:bg-white/50 
+            bg-white
             p-4 
             rounded-md 
             z-20
+            flex
+            justify-center
             ">Heights Handyman</div>
       </div>
       <div
         className="
-          flex 
-          justify-center 
-          text-xl 
+          flex
+          justify-center
+          sm:absolute
+          sm:bottom-56
+          sm:left-60
           sm:text-2xl 
-          pt-4
+          text-lg 
+          text-center
+          mx-10
+          
           " id="subtitle
           ">
         <div
           className="
-            bg-white/50 
+            sm:bg-white/50 
+            bg-white
             rounded-md 
             p-2
             z-20
+            mt-10
             ">Your Home is One Step Closer to Realizing Its Full Potential</div>
       </div>
       {/* Begin homepage nav bar */}
 
 
-      <div
+      {/* <div
         className="
           flex 
           justify-center 
@@ -118,7 +135,7 @@ function Homepage() {
 
 
 
-      </div>
+      </div> */}
     </div>
   )
 }

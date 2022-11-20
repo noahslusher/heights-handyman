@@ -39,6 +39,7 @@ function ContactForm() {
     console.log('success')
 	}
 	return (
+		<section id="contact">
 		<Flex justifyContent="center" alignItems="center" height="100vh">
 			<Card
 				padding={{ large: tokens.space.xxxl }}
@@ -161,6 +162,7 @@ function ContactForm() {
 				</Flex>
 			</Card>
 		</Flex>
+		</section>
 	)
 }
 

@@ -15,21 +15,38 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Services from './pages/Services'
 
+// function App() {
+//   return (
+//     <ChakraProvider>
+//     <Router>
+//       <Header />
+//       <Routes>
+//         <Route path="/" element={<Homepage />}></Route>
+//         <Route path="/about" element={<About />}></Route>
+//         <Route path="/contact" element={<ContactForm />}></Route>
+//         <Route path="/services" element={<Services />}></Route>
+//       </Routes>
+//       <Footer />
+//     </Router>
+//     </ChakraProvider>
+//   );
+// }
+
 function App() {
   return (
     <ChakraProvider>
-    <Router>
+      <div>
       <Header />
-      <Routes>
-        <Route path="/" element={<Homepage />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<ContactForm />}></Route>
-        <Route path="/services" element={<Services />}></Route>
-      </Routes>
+      <main>
+      <Homepage />
+      <About />
+      <Services />
+      <ContactForm />
+      </main>
       <Footer />
-    </Router>
+      </div>
     </ChakraProvider>
-  );
+  )
 }
 
 export default App;

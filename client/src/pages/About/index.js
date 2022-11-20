@@ -9,7 +9,7 @@ function About() {
  className='
  flex
  justify-center
- '>
+ ' id="about">
   <div 
   className="
   mt-4
