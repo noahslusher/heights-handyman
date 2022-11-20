@@ -3,6 +3,10 @@ import { Link, useLocation } from 'react-router-dom'
 import about from './about.svg'
 import contact from './contact.svg'
 import services from './tools.svg'
+import hamburger from './hamburger.svg'
+import cross from './cross.svg'
+import {useState} from 'react'
+import './style.css'
 
 
 function Header() {
@@ -10,57 +14,62 @@ function Header() {
   // if (location.pathname === "/") {
   //   return null
   // }
+
+  // Hamburger menu functionality
+  const [isNavOpen, setIsNavOpen] = useState(false)
+
   return (
     <header
       className=" 
       transparent
+      sticky
+      top-0
+      z-100
         ">
-<div className="flex items-center justify-between border-b border-gray-400 py-8">
-      <a href="/">
-        
-      </a>
+<div className="">
+      
       <nav>
-        <section className="MOBILE-MENU flex lg:hidden">
+        <section className="MOBILE-MENU sticky flex justify-end transparent">
           <div
-            className="HAMBURGER-ICON space-y-2"
+            onClick={() => setIsNavOpen((prev) => !prev)}
           >
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
+            <div className={isNavOpen ? "hideHamburger" : "showHamburger"}>
+            <div className="
+            p-2
+            z-999">
+              <img src={hamburger}></img>
+            </div>
+          </div>
           </div>
 
-          <div>
+          <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+              <div className="
+              
+              ">
             <div
-              className="absolute top-0 right-0 px-8 py-8"
+              className="CROSS-ICON flex justify-end pt-4"
+              onClick={() => setIsNavOpen(false)} 
             >
-              <svg
-                className="h-8 w-8 text-gray-600"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              <img src={cross}/>
+               
             </div>
-            <ul className="NAVIGATION-MOBILE-OPEN flex flex-col items-center justify-between min-h-[250px]">
-              <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="/about">About</a>
+            <ul className="NAVIGATION-MOBILE-OPEN flex justify-center justify-between w-screen p-4 mt-4"
+            onClick={() => setIsNavOpen(false)}>
+              <li className="border-b border-gray-400 uppercase">
+              <a data-testid="about" href="#about">About Me</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="/portfolio">Portfolio</a>
+              <li className="border-b border-gray-400 uppercase">
+              <a data-testid="services" href="#services">Services</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
-                <a href="/contact">Contact</a>
+              <li className="border-b border-gray-400 uppercase">
+              <a data-testid="contact" href="#contact">Contact</a>
               </li>
             </ul>
           </div>
+          </div>
         </section>
 
-        <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
+        {/* <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
           <li>
             <a href="/about">About</a>
           </li>
@@ -70,10 +79,10 @@ function Header() {
           <li>
             <a href="/contact">Contact</a>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </div>
-      <div
+      {/* <div
         className="
           flex 
           justify-center
@@ -84,8 +93,8 @@ function Header() {
         <h1>
           <a data-testid="link" href="/">Heights Handyman</a> 
           </h1>
-      </div>
-      <div
+      </div> */}
+      {/* <div
         className='
           flex 
           justify-end 
@@ -115,7 +124,7 @@ function Header() {
             "><a data-testid="contact" href="#contact"><img src={contact} />
             </a>
             </div>
-      </div>
+      </div> */}
     </header>
   )
 }

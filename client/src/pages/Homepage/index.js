@@ -14,18 +14,18 @@ function Homepage() {
     w-screen
     h-screen
     justify-center
-    z-10
+    z-1
     relative
     ' id="/"> 
       <video className="
         absolute
         object-cover
         sm:h-full
-        h-3/4
+        h-full
         w-full
         sm:top-0
         sm:left-0
-        z-0
+        z-1
         " src={background} autoPlay loop muted  id="bg-video"/>
       {/* <div className='
         absolute
@@ -45,7 +45,7 @@ function Homepage() {
           text-4xl 
           sm:text-6xl 
           sm:absolute
-          sm:bottom-80
+          sm:top-1/4
           sm:left-20
           " id="title">
         <div
@@ -64,8 +64,8 @@ function Homepage() {
           flex
           justify-center
           sm:absolute
-          sm:bottom-56
-          sm:left-60
+          sm:bottom-1/2
+          sm:right-32
           sm:text-2xl 
           text-lg 
           text-center
