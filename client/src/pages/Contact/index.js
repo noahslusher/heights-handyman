@@ -14,7 +14,7 @@ import {
 	Link,
 } from '@aws-amplify/ui-react'
 import { BsTwitter, BsJournal, BsYoutube } from 'react-icons/bs'
-import {API} from 'aws-amplify'
+import {API} from 'aws-amplify/api'
 import {createClient} from './src/graphql/mutations.js'
 
 function ContactForm() {
@@ -36,10 +36,44 @@ function ContactForm() {
 				},
 			},
 		})
-    console.log('success')
 	}
 	return (
 		<section id="contact">
+			{/* <h1>
+				Submit a Quote
+			</h1>
+			<form onSubmit={handleFormSubmit}>
+				<fieldset>
+					<label>
+						<p>
+							Your Name
+						</p>
+						<input name="name"></input>
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<label>
+						<p>
+							Email
+						</p>
+						<input name="email"></input>
+					</label>
+				</fieldset>
+
+				<fieldset>
+					<label>
+						<p>
+							Message
+						</p>
+						<input name="message"></input>
+					</label>
+				</fieldset>
+				<button type="submit">Fix My House</button>
+			</form> */}
+
+
+
 		<Flex justifyContent="center" alignItems="center" height="100vh">
 			<Card
 				padding={{ large: tokens.space.xxxl }}
@@ -91,13 +125,7 @@ function ContactForm() {
 							</Button>
 						</ButtonGroup>
 						<Flex style={{ marginLeft: tokens.space.large }}>
-							{/* <Link
-								href="https://twitter.com/mtliendo"
-								color={tokens.colors.blue[20]}
-								fontSize={'2rem'}
-							>
-								<Icon ariaLabel="twitter" as={BsTwitter} />
-							</Link> */}
+
 							<Link
 								href="https://www.youtube.com/channel/UCrOSmdkNLR8orMYde3H-aUQ"
 								color={tokens.colors.red[60]}
@@ -105,13 +133,6 @@ function ContactForm() {
 							>
 								<Icon ariaLabel="youtube" as={BsYoutube} />
 							</Link>
-							{/* <Link
-								href="https://blog.focusotter.com"
-								color={tokens.colors.green[40]}
-								fontSize={'2rem'}
-							>
-								<Icon ariaLabel="blog" as={BsJournal} />
-							</Link> */}
 						</Flex>
 					</Flex>
 					<View
@@ -128,7 +149,6 @@ function ContactForm() {
 								placeholder="Your Name"
 								innerStartComponent={
 									<FieldGroupIcon ariaLabel="">
-										{/** Accessibility tip: pass empty ariaLabel for decorative icons. */}
 										<Icon />
 									</FieldGroupIcon>
 								}
@@ -141,7 +161,6 @@ function ContactForm() {
 								required
 								innerStartComponent={
 									<FieldGroupIcon ariaLabel="">
-										{/** Accessibility tip: pass empty ariaLabel for decorative icons. */}
 										<Icon />
 									</FieldGroupIcon>
 								}
@@ -154,7 +173,7 @@ function ContactForm() {
 							/>
 							<View style={{ marginTop: tokens.space.medium }}>
 								<Button type="submit" variation="primary">
-									Send Message
+									Submit
 								</Button>
 							</View>
 						</Flex>
