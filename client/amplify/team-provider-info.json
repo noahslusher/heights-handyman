@@ -1,0 +1,27 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-heightshandyman-dev-105748-authRole",
+      "UnauthRoleArn": "arn:aws:iam::167539090131:role/amplify-heightshandyman-dev-105748-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::167539090131:role/amplify-heightshandyman-dev-105748-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-heightshandyman-dev-105748-deployment",
+      "UnauthRoleName": "amplify-heightshandyman-dev-105748-unauthRole",
+      "StackName": "amplify-heightshandyman-dev-105748",
+      "StackId": "arn:aws:cloudformation:us-west-2:167539090131:stack/amplify-heightshandyman-dev-105748/817c7ea0-70d8-11ed-9d08-029f1c758b2f",
+      "AmplifyAppId": "d1nut3vy231wk8"
+    },
+    "categories": {
+      "api": {
+        "heightshandyman": {}
+      },
+      "function": {
+        "heightshandyman5c7033c0": {
+          "deploymentBucketName": "amplify-heightshandyman-dev-105748-deployment",
+          "s3Key": "amplify-builds/heightshandyman5c7033c0-47446e426b397a4b5a63-build.zip",
+          "sesEmail": "service@heights-handyman.com"
+        }
+      }
+    }
+  }
+}

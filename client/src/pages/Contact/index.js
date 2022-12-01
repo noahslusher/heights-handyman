@@ -14,8 +14,17 @@ import {
 	Link,
 } from '@aws-amplify/ui-react'
 import { BsTwitter, BsJournal, BsYoutube } from 'react-icons/bs'
-import {API} from 'aws-amplify/api'
-import {createClient} from './src/graphql/mutations.js'
+import {API} from 'aws-amplify'
+import {createQuote} from './graphql/mutations.js'
+
+import { ThemeProvider } from "@aws-amplify/ui-react";
+import { Amplify } from 'aws-amplify';
+
+import awsconfig from '../../aws-exports';
+
+import "@aws-amplify/ui-react/styles.css";
+
+Amplify.configure(awsconfig);
 
 function ContactForm() {
 	const { tokens } = useTheme()
@@ -23,58 +32,126 @@ function ContactForm() {
 	const handleFormSubmit = async (e) => {
 		e.preventDefault()
 		const name = e.target.name.value
+		const phone = e.target.phone.value
 		const email = e.target.email.value
-		const message = e.target.message.value
+		const date = e.target.date.value
+		const time = e.target.time.value
+		const preference = e.target.preference.value
+		const information = e.target.information.value
+		const source = e.target.source.value
+		const fee = e.target.name.fee
+		const agreement = e.target.agreement.value
 
 		await API.graphql({
-			query: createClient,
+			query: createQuote,
 			variables: {
 				input: {
 					name,
+					phone,
 					email,
-					message,
+					date,
+					time,
+					preference,
+					information,
+					source,
+					fee,
+					agreement
 				},
 			},
 		})
 	}
 	return (
 		<section id="contact">
-			{/* <h1>
+			<h1>
 				Submit a Quote
 			</h1>
 			<form onSubmit={handleFormSubmit}>
-				<fieldset>
-					<label>
-						<p>
-							Your Name
-						</p>
-						<input name="name"></input>
-					</label>
-				</fieldset>
+				
+				<label>
+					Your Name
+				<input 
+				type="text" 
+				placeholder="Your name"
+				name="name"></input>
+				</label>
 
-				<fieldset>
-					<label>
-						<p>
-							Email
-						</p>
-						<input name="email"></input>
-					</label>
-				</fieldset>
+				<label>
+					Phone Number
+					<input 
+					type="number" 
+					name="phone"></input>
+				</label>
 
-				<fieldset>
-					<label>
-						<p>
-							Message
-						</p>
-						<input name="message"></input>
-					</label>
-				</fieldset>
-				<button type="submit">Fix My House</button>
-			</form> */}
+				<label>
+					Email
+					<input 
+					type="email" 
+					name="email"></input>
+				</label>
+
+				<label>
+					Date
+					<input 
+					type="text"
+					name="date"></input>
+				</label>
+
+				<label>
+					Time
+					<input
+					type="text"
+					name="time"></input>
+				</label>
+
+				<label>
+					Time
+					<input
+					type="text"
+					name="time"></input>
+				</label>
+
+				<label>
+					Preference
+					<input
+					type="text"
+					name="preference"></input>
+				</label>
+
+				<label>
+					Information
+					<input
+					type="text"
+					name="information"></input>
+				</label>
+
+				<label>
+					Source
+					<input
+					type="text"
+					name="source"></input>
+				</label>
+
+				<label>
+					Fee
+					<input
+					type="text"
+					name="fee"></input>
+				</label>
+
+				<label>
+					Agreement
+					<input
+					type="text"
+					name="agreement"></input>
+				</label>
+
+
+				<button type="submit">Submit</button>
+			</form>
 
 
 
-		<Flex justifyContent="center" alignItems="center" height="100vh">
+		{/* <Flex justifyContent="center" alignItems="center" height="100vh">
 			<Card
 				padding={{ large: tokens.space.xxxl }}
 				variation="elevated"
@@ -180,11 +257,13 @@ function ContactForm() {
 					</View>
 				</Flex>
 			</Card>
-		</Flex>
+		</Flex> */}
 		</section>
 	)
 }
 
 export default ContactForm
+
+
 
 
