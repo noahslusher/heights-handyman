@@ -1,24 +1,26 @@
-import {
-	ButtonGroup,
-	Button,
-	Card,
-	Flex,
-	Heading,
-	Text,
-	View,
-	useTheme,
-	TextField,
-	TextAreaField,
-	FieldGroupIcon,
-	Icon,
-	Link,
-} from '@aws-amplify/ui-react'
-import { BsTwitter, BsJournal, BsYoutube } from 'react-icons/bs'
-import {API} from 'aws-amplify'
-import {createQuote} from './graphql/mutations.js'
+// import {
+// 	ButtonGroup,
+// 	Button,
+// 	Card,
+// 	Flex,
+// 	Heading,
+// 	Text,
+// 	View,
+// 	useTheme,
+// 	TextField,
+// 	TextAreaField,
+// 	FieldGroupIcon,
+// 	Icon,
+// 	Link,
+// } from '@aws-amplify/ui-react'
+// import { BsTwitter, BsJournal, BsYoutube } from 'react-icons/bs'
+// import {API} from 'aws-amplify'
 
-import { ThemeProvider } from "@aws-amplify/ui-react";
-import { Amplify } from 'aws-amplify';
+import { useFormik } from 'formik';
+import { createQuote } from './graphql/mutations.js';
+import { listQuotes } from './graphql/queries.js'
+// import { ThemeProvider } from "@aws-amplify/ui-react";
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
 
 import awsconfig from '../../aws-exports';
 
@@ -26,8 +28,85 @@ import "@aws-amplify/ui-react/styles.css";
 
 Amplify.configure(awsconfig);
 
+const initialState = {
+	name: '',
+	phone: '',
+	email: '',
+	date: '',
+	time: '',
+	preference: '',
+	information: '',
+	source: '',
+	fee: '',
+	agreement: ''
+}
+
+const validate = values => {
+
+
+	// Validation parameters
+	const errors = {};
+
+	if (!values.name) {
+		errors.firstName = 'Required';
+	} else if (values.firstName.length > 40) {
+		errors.firstName = 'Must be 40 characters or less';
+	}
+
+	if (!values.phone) {
+		errors.phone = 'Required';
+	} else if (values.phone.length === 10) {
+		errors.phone = 'Must be 10 characters';
+	}
+
+	if (!values.email) {
+		errors.email = 'Required';
+	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+		errors.email = 'Invalid email address';
+	}
+
+	if (!values.date) {
+		errors.date = 'Required';
+	}
+	
+	if (!values.preference) {
+		errors.preference = 'Required';
+	}
+
+	if (!values.information) {
+		errors.information = 'Required';
+	} 
+
+	if (!values.fee) {
+		errors.fee = 'Required';
+	} 
+
+	if (!values.agreement) {
+		errors.agreement = 'Required';
+	} else if (values.agreement !== true) {
+		errors.agreement = 'Must agree to terms of service';
+	}
+
+	return errors;
+
+};
+
 function ContactForm() {
-	const { tokens } = useTheme()
+	// const { tokens } = useTheme()
+
+	const [formState, setFormState] = useState(initialState)
+	const [quotes, setQuotes] = useState([])
+
+	async function addQuote() {
+		try {
+			const quote = { ...formState}
+			setQuotes([...quotes, quote])
+			setFormState(initialState)
+			await API.graphql(graphqlOperation(createQuote, {input: quote}))
+	} catch (err) { 
+		console.log('error creating quote, err')
+	}
+}
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault()
@@ -66,83 +145,83 @@ function ContactForm() {
 				Submit a Quote
 			</h1>
 			<form onSubmit={handleFormSubmit}>
-				
+
 				<label>
 					Your Name
-				<input 
-				type="text" 
-				placeholder="Your name"
-				name="name"></input>
+					<input
+						type="text"
+						placeholder="Your name"
+						name="name"></input>
 				</label>
 
 				<label>
 					Phone Number
-					<input 
-					type="number" 
-					name="phone"></input>
+					<input
+						type="number"
+						name="phone"></input>
 				</label>
 
 				<label>
 					Email
-					<input 
-					type="email" 
-					name="email"></input>
+					<input
+						type="email"
+						name="email"></input>
 				</label>
 
 				<label>
 					Date
-					<input 
-					type="text"
-					name="date"></input>
+					<input
+						type="text"
+						name="date"></input>
 				</label>
 
 				<label>
 					Time
 					<input
-					type="text"
-					name="time"></input>
+						type="text"
+						name="time"></input>
 				</label>
 
 				<label>
 					Time
 					<input
-					type="text"
-					name="time"></input>
+						type="text"
+						name="time"></input>
 				</label>
 
 				<label>
 					Preference
 					<input
-					type="text"
-					name="preference"></input>
+						type="text"
+						name="preference"></input>
 				</label>
 
 				<label>
 					Information
 					<input
-					type="text"
-					name="information"></input>
+						type="text"
+						name="information"></input>
 				</label>
 
 				<label>
 					Source
 					<input
-					type="text"
-					name="source"></input>
+						type="text"
+						name="source"></input>
 				</label>
 
 				<label>
 					Fee
 					<input
-					type="text"
-					name="fee"></input>
+						type="text"
+						name="fee"></input>
 				</label>
 
 				<label>
 					Agreement
 					<input
-					type="text"
-					name="agreement"></input>
+						type="text"
+						name="agreement"></input>
 				</label>
 
 
@@ -151,7 +230,7 @@ function ContactForm() {
 
 
 
-		{/* <Flex justifyContent="center" alignItems="center" height="100vh">
+			{/* <Flex justifyContent="center" alignItems="center" height="100vh">
 			<Card
 				padding={{ large: tokens.space.xxxl }}
 				variation="elevated"
