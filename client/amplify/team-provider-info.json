@@ -18,7 +18,7 @@
       "function": {
         "heightshandyman5c7033c0": {
           "deploymentBucketName": "amplify-heightshandyman-dev-105748-deployment",
-          "s3Key": "amplify-builds/heightshandyman5c7033c0-47446e426b397a4b5a63-build.zip",
+          "s3Key": "amplify-builds/heightshandyman5c7033c0-6d657a3247376d513064-build.zip",
           "sesEmail": "service@heights-handyman.com"
         }
       }

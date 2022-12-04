@@ -16,6 +16,14 @@
 // import { BsTwitter, BsJournal, BsYoutube } from 'react-icons/bs'
 // import {API} from 'aws-amplify'
 
+import React, {useEffect, useState } from 'react'
+
+import DatePicker from "react-datepicker";
+import setHours from 'date-fns/setHours';
+import setMinutes from 'date-fns/setMinutes';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-datepicker/dist/react-datepicker.css";
+
 import { useFormik } from 'formik';
 import { createQuote } from './graphql/mutations.js';
 import { listQuotes } from './graphql/queries.js'
@@ -28,18 +36,9 @@ import "@aws-amplify/ui-react/styles.css";
 
 Amplify.configure(awsconfig);
 
-const initialState = {
-	name: '',
-	phone: '',
-	email: '',
-	date: '',
-	time: '',
-	preference: '',
-	information: '',
-	source: '',
-	fee: '',
-	agreement: ''
-}
+
+
+
 
 const validate = values => {
 
@@ -55,7 +54,7 @@ const validate = values => {
 
 	if (!values.phone) {
 		errors.phone = 'Required';
-	} else if (values.phone.length === 10) {
+	} else if (values.phone.length !== 10) {
 		errors.phone = 'Must be 10 characters';
 	}
 
@@ -91,24 +90,50 @@ const validate = values => {
 
 };
 
-function ContactForm() {
-	// const { tokens } = useTheme()
-
-	const [formState, setFormState] = useState(initialState)
-	const [quotes, setQuotes] = useState([])
-
-	async function addQuote() {
-		try {
-			const quote = { ...formState}
-			setQuotes([...quotes, quote])
-			setFormState(initialState)
-			await API.graphql(graphqlOperation(createQuote, {input: quote}))
-	} catch (err) { 
-		console.log('error creating quote, err')
-	}
+const initialState = {
+	name: '',
+	phone: '',
+	email: '',
+	date: '',
+	preference: '',
+	information: '',
+	source: '',
+	fee: '',
+	agreement: ''
 }
 
-	const handleFormSubmit = async (e) => {
+const ContactForm = () => {
+
+	// const { tokens } = useTheme()
+
+// 	const [date, setDate] = useState(setHours(setMinutes(new Date(), 30), 17))
+
+	
+// 	const [formState, setFormState] = useState(initialState)
+// 	const [quotes, setQuotes] = useState([])
+
+// 	function setInput(key, value) {
+// 		setFormState({ ...formState, [key]: value })
+// }
+
+// 	async function addQuote() {
+// 		try {
+// 			const quote = { ...formState}
+// 			setQuotes([...quotes, quote])
+// 			setFormState(initialState)
+// 			await API.graphql(graphqlOperation(createQuote, {input: quote}))
+// 	} catch (err) { 
+// 		console.log('error creating quote:', err)
+// 	}
+// 	console.log({...formState})
+// }
+
+ const handleFormSubmit = async (e) => { e.preventDefault()
+	
+	await addQuote()
+}
+
+	const ahandleFormSubmit = async (e) => {
 		e.preventDefault()
 		const name = e.target.name.value
 		const phone = e.target.phone.value
@@ -129,7 +154,6 @@ function ContactForm() {
 					phone,
 					email,
 					date,
-					time,
 					preference,
 					information,
 					source,
@@ -144,88 +168,118 @@ function ContactForm() {
 			<h1>
 				Submit a Quote
 			</h1>
-			<form onSubmit={handleFormSubmit}>
+			<form>
 
 				<label>
 					Your Name
 					<input
 						type="text"
-						placeholder="Your name"
-						name="name"></input>
+						onChange={event => setInput('name', event.target.value)}
+						value={formState.name}
+						placeholder="Your Name">
+						</input>
 				</label>
 
 				<label>
 					Phone Number
 					<input
-						type="number"
-						name="phone"></input>
+						onChange={event => setInput('phone', event.target.value)}
+						value={formState.phone}
+						placeholder="8015567789">
+						</input>
 				</label>
 
 				<label>
 					Email
 					<input
-						type="email"
-						name="email"></input>
-				</label>
+						onChange={event => setInput('email', event.target.value)}
+						value={formState.email}
+						placeholder="email@email.com">
 
-				<label>
-					Date
-					<input
-						type="text"
-						name="date"></input>
+						</input>
 				</label>
+				
+				<div className="mb-3">
+   <label htmlFor="exampleFormControlInput1" className="form-label">Date</label>
+   <DatePicker selected={formState.date} onChange={(date) =>
+   setDate(date)} id="exampleFormControlInput1"
+   name="date" className="form-control" dateFormat="MMMM d, yyyy h:mm aa" withPortal 
+   showTimeSelect minTime={setHours(setMinutes(new Date(), 0), 17)}
+   maxTime={setHours(setMinutes(new Date(), 30), 20)}/>
+</div>
 
-				<label>
+				{/* <label>
 					Time
 					<input
-						type="text"
-						name="time"></input>
-				</label>
+						onChange={event => setInput('name', event.target.value)}
+						value={formState.name}
+						placeholder="Your Name"></input>
+				</label> */}
+
+				
 
 				<label>
-					Time
+					Type of Work
 					<input
-						type="text"
-						name="time"></input>
-				</label>
-
-				<label>
-					Preference
-					<input
-						type="text"
-						name="preference"></input>
+						onChange={event => setInput('preference', event.target.value)}
+						value={formState.preference}
+						placeholder=""></input>
 				</label>
 
 				<label>
 					Information
-					<input
-						type="text"
-						name="information"></input>
+					<textarea
+						onChange={event => setInput('information', event.target.value)}
+						value={formState.information}
+						placeholder=""></textarea>
 				</label>
 
 				<label>
-					Source
-					<input
-						type="text"
-						name="source"></input>
+					How did you hear about Heights Handyman Services?
+					{/* <input
+						onChange={event => setInput('source', event.target.value)}
+						value={formState.source}
+						placeholder=""></input> */}
+						<select value={formState.source} onChange={event => setInput('source', event.target.value)}>            
+												<option value="Google">Google</option>
+            <option value="Thumbtack">Thumbtack</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Referral">Referral</option>
+												<option value="Other">Other</option>
+          </select>
 				</label>
 
 				<label>
-					Fee
-					<input
-						type="text"
-						name="fee"></input>
+					If an on-site estimate is required, Heights Handyman Services will charge a $50 assessment/travel fee. This amount will be credited towards your final bill if Heights Handyman Services is hired, but is forfeited if not hired.
+					<br/>
+					Please check the box to agree.
+					<div> 
+						I agree
+					<input className='ml-2'
+						type="checkbox"
+						onChange={event => setInput('fee', event.target.value)}
+						value={formState.fee}
+						placeholder="">
+						</input>
+					</div>
 				</label>
 
 				<label>
-					Agreement
-					<input
-						type="text"
-						name="agreement"></input>
+					This form only allows Heights Handyman Services to deliver a "ballpark" estimate. Please check the box to acknowledge that pricing may change once an on-site visit is made and Heights Handyman Services has all necessary information.
+					<br/>
+					<div>
+						I Understand
+					<input className='ml-2'
+						type="checkbox"
+						onChange={event => setInput('agreement', event.target.value)}
+						value={formState.agreement}
+						placeholder="">
+						</input>
+					</div>
 				</label>
 
 
-				<button type="submit">Submit</button>
+				<button onClick={addQuote} >Submit</button>
 			</form>
 
 
@@ -339,7 +393,7 @@ function ContactForm() {
 		</Flex> */}
 		</section>
 	)
-}
+	}
 
 export default ContactForm
 

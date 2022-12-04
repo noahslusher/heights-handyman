@@ -12,7 +12,6 @@ export const createQuote = /* GraphQL */ `
       phone
       email
       date
-      time
       preference
       information
       source
@@ -34,7 +33,6 @@ export const updateQuote = /* GraphQL */ `
       phone
       email
       date
-      time
       preference
       information
       source
@@ -56,7 +54,6 @@ export const deleteQuote = /* GraphQL */ `
       phone
       email
       date
-      time
       preference
       information
       source

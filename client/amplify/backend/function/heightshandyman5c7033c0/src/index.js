@@ -12,7 +12,6 @@ exports.handler = async (event) => {
       const clientPhone = streamedItem.dynamodb.NewImage.phone.S
       const clientEmail = streamedItem.dynamodb.NewImage.email.S
       const clientDate = streamedItem.dynamodb.NewImage.date.S
-      const clientTime = streamedItem.dynamodb.NewImage.time.S
       const clientPreference = streamedItem.dynamodb.NewImage.preference.S
       const clientInformation = streamedItem.dynamodb.NewImage.information.S
       const clientSource = streamedItem.dynamodb.NewImage.source.S

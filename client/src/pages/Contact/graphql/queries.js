@@ -9,7 +9,6 @@ export const getQuote = /* GraphQL */ `
       phone
       email
       date
-      time
       preference
       information
       source
@@ -33,7 +32,6 @@ export const listQuotes = /* GraphQL */ `
         phone
         email
         date
-        time
         preference
         information
         source

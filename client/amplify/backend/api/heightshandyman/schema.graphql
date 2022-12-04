@@ -8,10 +8,9 @@ type Quote @model @auth(rules: [{ allow: public, operations: [create] }]) {
   phone: String!
   email: AWSEmail!
   date: String!
-  time: String!
   preference: String!
   information: String!
   source: String!
-  fee: String!
+  fee: Boolean!
   agreement: Boolean!
 }
